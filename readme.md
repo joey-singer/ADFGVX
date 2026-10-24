@@ -18,3 +18,13 @@
 - Decode!
 - Dynamic Polybius Square creation to secure/formulate cypher more accurately (without you needing to carry around a codebook)
   - The current Polybius Square used comes from the example provided on the Wikipedia article associated to this topic; it is not randomized (as would be more “secure” accurate to its historical use)
+Polybius Square:
+
+|   | A | D | F | G | V | X |
+| - | - | - | - | - | - | - |
+| A | N | A | 1 | C | 3 | H |
+| D | 8 | T | B | 2 | O | M |
+| F | E | 5 | W | R | P | D |
+| G | 4 | F | 6 | G | 7 | I |
+| V | 9 | J | 0 | K | L | Q |
+| X | S | U | V | X | Y | Z |
