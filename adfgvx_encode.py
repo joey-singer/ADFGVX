@@ -10,18 +10,8 @@ def prune(message):
 
 def letter_assign(x):
     # Big if-else tree to assign a letter based on adfgvx
-    if x == 0:
-        return "A"
-    elif x == 1:
-        return "D"
-    elif x == 2:
-        return "F"
-    elif x == 3:
-        return "G"
-    elif x == 4:
-        return "V"
-    elif x == 5:
-        return "X"
+    if x in range(6):
+        return "ADFGVX"[x]
     else:
         print("Error encountered. Exiting")
         sys.exit()
@@ -55,21 +45,20 @@ def transpose_from_word(message, tword):
     # Convert abc letter based list from the message into ADFGVX letter based list
     message_list = list(list2str(message))
     len_tword = len(tword) # get length of word for sorting indices
+    if len_tword == 0:
+        raise ValueError("The transposition keyword cannot be empty.")
     tword = list(tword.upper()) # convert transposition word to a list of characters
 
     transpose_dict = {}
     for i, char in enumerate(tword): # sort each item into a tuple with the letter and its index
         key = (char,i)
         transpose_dict[key]=[]
+
     for i, letter in enumerate(message_list):
-        if i != 0:
             dic_idx_i = (i % len_tword)
             assoc_key = (tword[dic_idx_i],dic_idx_i)
             transpose_dict[assoc_key].append(letter)
-        else:
-            dic_idx_i = 0
-            assoc_key = (tword[dic_idx_i],dic_idx_i)
-            transpose_dict[assoc_key].append(letter)
+
     sorted_transpose_dict = dict(sorted(transpose_dict.items()))
     reconstituted_message = list(sorted_transpose_dict.values())
     for i, inner_list in enumerate(reconstituted_message):
